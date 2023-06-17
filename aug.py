@@ -61,17 +61,17 @@ for idx, img in enumerate(images):
         augmented_img = augmentation.augment_image(img)
 
         # Apply cropping to remove black space
-        cropped_img = augmented_img.copy()
-        gray = cv2.cvtColor(augmented_img, cv2.COLOR_BGR2GRAY)
-        _, thresh = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        if len(contours) > 0:
-            x, y, w, h = cv2.boundingRect(contours[0])
-            cropped_img = cropped_img[y:y + h, x:x + w]
+        # cropped_img = augmented_img.copy()
+        # gray = cv2.cvtColor(augmented_img, cv2.COLOR_BGR2GRAY)
+        # _, thresh = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
+        # contours, hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # if len(contours) > 0:
+        #     x, y, w, h = cv2.boundingRect(contours[0])
+        #     cropped_img = cropped_img[y:y + h, x:x + w]
 
 
         output_path = os.path.join(output_dir, f"augmented_{idx}_{aug_idx}.jpeg")
-        cv2.imwrite(output_path, cropped_img)
+        cv2.imwrite(output_path, augmented_img)
 
 
 cv2.destroyAllWindows()
