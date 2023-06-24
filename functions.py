@@ -74,15 +74,61 @@ print(sum_to(10))
 
 
 
-def largest(numbers):
-    big_num = numbers[0]
-    for num in numbers:
-        if num >= big_num:
-            big_num = num
+# def largest(numbers):
+#     big_num = numbers[0]
+#     for num in numbers:
+#         if num >= big_num:
+#             big_num = num
 
-    return big_num
+#     return big_num
 
-print(largest([2, 4, 7, 9, 12]))
+# print(largest([2, 4, 7, 9, 12]))
+
+#Write a function named occurences that takes two string arguments as input and counts the number of occurences of the second string inside the first string.
+
+# def occurences(text, search):
+#     count = 0
+#     while text.find(search) != -1:
+#         main = text.find(search)
+#         if main >= 0:
+#             count += 1
+#             text = text[main + 1:]
+#     return count
+
+# print(occurences('sweetness', 'e'))
+
+# def occurrences(text, search):
+#     count = 0
+#     while text.find(search) >= 0:
+#         count += 1
+#         text = text[text.find(search) + len(search):]
+#     return count
+
+# print(occurrences('sweetness', 'e'))
 
 
+# def product(*args):
+#     num = 1
+#     for arg in args:
+#         num *= arg
 
+#     return num
+
+# print(product(6, 4, 1))
+
+
+def steps_to_zero(n):
+    steps = 0
+    while n > 0:
+        if n % 2 == 0:
+            steps += 1
+            n = n // 2
+        else:
+            if n > 1:
+                steps += 1
+                n = n - 1
+            else:
+                break
+    return steps
+
+print(steps_to_zero(28))
