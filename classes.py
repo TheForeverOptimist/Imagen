@@ -86,13 +86,16 @@ class BankAccount():
         balance -= amount
 
     def __str__(self):
-        return f'The Bank {self.account_no} is owned by {self.owner} has a balance of {self.balance}'
+        return f'Account {self.account_no} / Balance: {self.balance}'
     
 chase = BankAccount('John Michael', 40000)
 
 print(chase)
 
 print(chase.owner, chase.balance, chase.account_no)
+
+
+class SavingsAccount(BankAccount):
 
 
 
