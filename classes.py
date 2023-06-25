@@ -74,19 +74,30 @@ import random
 # print(car.id)
 
 class BankAccount():
-    def __init__(self, owner, balance):
+    def __init__(self, owner, balance, has_overdraft=False):
         self.owner = owner
         self.balance = balance
         self.account_no = random.randint(111111, 999999)
+        self.has_overdraft = has_overdraft
 
-    def deposit(amount):
-        balance += amount
+    def deposit(self, amount):
+        self.balance += amount
 
-    def withdraw(amount):
-        balance -= amount
+    def withdraw(self, amount):
+        # self.balance -= amount if self.has_overdraft == True else "Sorry Withdrawal is more than current balance"
+        return self.balance - amount if amount <= self.balance or self.has_overdraft else "Sorry, withdrawal amount exceeds current balance."
+
 
     def __str__(self):
         return f'Account {self.account_no} / Balance: {self.balance}'
+    
+
+class SavingsAccount(BankAccount):
+    def __init__(self, owner, balance):
+        BankAccount.__init__(self, owner, balance)
+
+    def withdraw(self, amount = None):
+        return "No Withdrawals permitted"
     
 chase = BankAccount('John Michael', 40000)
 
@@ -94,8 +105,9 @@ print(chase)
 
 print(chase.owner, chase.balance, chase.account_no)
 
+print(chase.withdraw(500000))
 
-class SavingsAccount(BankAccount):
+
 
 
 
